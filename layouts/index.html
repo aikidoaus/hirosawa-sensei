@@ -4,10 +4,12 @@
 {{/* ---------- HERO ---------- */}}
 <section id="home" class="hero">
   <div class="hero-overlay"></div>
+  <div class="hero-kanji" aria-hidden="true">廣澤英雄</div>
   <div class="hero-content">
-    <h1>Hideo Hirosawa Sensei</h1>
-    <span class="hero-subhead">{{ .Site.Params.subhead }}</span>
-    <a href="#about" class="btn btn-outline">About</a>
+    <span class="hero-eyebrow">合気道 &middot; Aikido</span>
+    <h1>Hideo Hirosawa<span class="hero-sensei">(1937&ndash;2026)</span></h1>
+    <span class="hero-subhead">七段 &middot; 7th Dan &middot; Shihan</span>
+    <a href="#about" class="btn btn-outline">About Sensei <span class="btn-arrow">&darr;</span></a>
   </div>
   <a href="#about" class="hero-scroll" aria-label="Scroll down"><span></span></a>
 </section>
@@ -15,7 +17,10 @@
 {{/* ---------- ABOUT ---------- */}}
 <section id="about" class="section section-light">
   <div class="container">
-    <h2 class="section-title">About</h2>
+    <div class="section-head">
+      <span class="section-kanji">略歴</span>
+      <h2 class="section-title">About</h2>
+    </div>
     <div class="prose">
       {{ range $d.about }}<p>{{ . }}</p>{{ end }}
     </div>
@@ -25,7 +30,10 @@
 {{/* ---------- GALLERY ---------- */}}
 <section id="gallery" class="section section-grey">
   <div class="container">
-    <h2 class="section-title">Gallery</h2>
+    <div class="section-head">
+      <span class="section-kanji">写真</span>
+      <h2 class="section-title">Gallery</h2>
+    </div>
 
     {{/* feature collage — original layout: a 3-up row, then a 2-up row */}}
     <div class="collage">
@@ -89,7 +97,10 @@
 {{/* ---------- CONTACT / RELATED LINKS ---------- */}}
 <section id="contact" class="section section-light">
   <div class="container">
-    <h2 class="section-title">Related links</h2>
+    <div class="section-head">
+      <span class="section-kanji">関連</span>
+      <h2 class="section-title">Related links</h2>
+    </div>
     <ul class="links">
       {{ range $d.links }}
       <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a></li>
