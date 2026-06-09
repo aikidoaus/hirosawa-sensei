@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }} | Aikido{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
+  {{ $css := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js','js');</script>
+</head>
+<body>
+  {{ partial "header.html" . }}
+  <main id="content">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+  {{ $js := resources.Get "js/main.js" | resources.Minify | resources.Fingerprint }}
+  <script type="module" src="{{ $js.RelPermalink }}"></script>
+</body>
+</html>

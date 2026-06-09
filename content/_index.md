@@ -1,0 +1,3 @@
+---
+title: "Hideo Hirosawa Sensei"
+---
