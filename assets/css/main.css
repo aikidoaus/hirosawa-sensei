@@ -87,10 +87,14 @@ p{margin:0 0 1.4em}
 .prose{max-width:820px;margin:0 auto;font-size:16px}
 .prose p{margin-bottom:1.5em}
 
-/* ===== Collage ===== */
-.collage{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:64px}
+/* ===== Collage (original: 3-up row, then 2-up row; all 3:2, uncropped) ===== */
+.collage{margin-bottom:64px}
+.collage-row{display:grid;gap:14px;margin-bottom:14px}
+.collage-row:last-child{margin-bottom:0}
+.collage-row-3{grid-template-columns:repeat(3,1fr)}
+.collage-row-2{grid-template-columns:repeat(2,1fr)}
 .collage-item{overflow:hidden;border-radius:2px;box-shadow:0 1px 6px rgba(0,0,0,.12)}
-.collage-item img{width:100%;height:240px;object-fit:cover;transition:transform .4s}
+.collage-item img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .4s}
 .collage-item:hover img{transform:scale(1.05)}
 
 /* ===== Events ===== */
@@ -118,9 +122,10 @@ p{margin:0 0 1.4em}
 /* ===== Footer ===== */
 #main-footer{background:rgba(25,25,25,.97);color:rgba(255,255,255,.7);padding:34px 0}
 .footer-inner{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
-.footer-social{display:flex;gap:22px}
-.footer-social a{color:rgba(255,255,255,.85);font-size:14px;text-transform:uppercase;letter-spacing:.05em}
-.footer-social a:hover{color:#fff}
+.footer-social{display:flex;gap:18px}
+.footer-social a{display:inline-flex;color:rgba(255,255,255,.7);transition:color .2s,transform .2s}
+.footer-social a:hover{color:#fff;transform:translateY(-2px)}
+.footer-social svg{width:26px;height:26px;fill:currentColor}
 .footer-copy{margin:0;font-size:13px;color:rgba(255,255,255,.55)}
 
 /* ===== Reveal on scroll (guarded by .js) ===== */
@@ -141,8 +146,7 @@ p{margin:0 0 1.4em}
   #main-header.nav-open .nav-menu{max-height:320px}
   .nav-menu li{border-top:1px solid rgba(255,255,255,.08)}
   .nav-menu a{display:block;padding:14px 24px}
-  .collage{grid-template-columns:repeat(2,1fr)}
-  .collage-item img{height:180px}
+  .collage-row-3{grid-template-columns:repeat(2,1fr)}
   .photo-grid{grid-template-columns:repeat(2,1fr)}
   .section{padding:64px 0}
 }

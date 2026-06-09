@@ -27,13 +27,22 @@
   <div class="container">
     <h2 class="section-title">Gallery</h2>
 
-    {{/* feature collage */}}
+    {{/* feature collage — original layout: a 3-up row, then a 2-up row */}}
     <div class="collage">
-      {{ range $d.collage }}
-      <a class="collage-item" href="/images/{{ .full }}" data-pswp-width="{{ .w }}" data-pswp-height="{{ .h }}" target="_blank">
-        <img src="/images/{{ .full }}" alt="" loading="lazy">
-      </a>
-      {{ end }}
+      <div class="collage-row collage-row-3">
+        {{ range first 3 $d.collage }}
+        <a class="collage-item" href="/images/{{ .full }}" data-pswp-width="{{ .w }}" data-pswp-height="{{ .h }}" target="_blank">
+          <img src="/images/{{ .full }}" alt="" loading="lazy">
+        </a>
+        {{ end }}
+      </div>
+      <div class="collage-row collage-row-2">
+        {{ range after 3 $d.collage }}
+        <a class="collage-item" href="/images/{{ .full }}" data-pswp-width="{{ .w }}" data-pswp-height="{{ .h }}" target="_blank">
+          <img src="/images/{{ .full }}" alt="" loading="lazy">
+        </a>
+        {{ end }}
+      </div>
     </div>
 
     {{ range $d.events }}
@@ -42,14 +51,36 @@
       <div class="prose">
         {{ range .paras }}<p>{{ . }}</p>{{ end }}
       </div>
+      {{ if eq .id "e2012japan" }}
+      {{/* 3-up row, then 2-up row */}}
+      <div class="pswp-gallery collage" id="gal-{{ .id }}">
+        <div class="collage-row collage-row-3">
+          {{ range first 3 .images }}
+          <a class="collage-item" href="/images/{{ .full }}" data-pswp-width="{{ .w }}" data-pswp-height="{{ .h }}" target="_blank">
+            <img src="/images/{{ .full }}" alt="" loading="lazy">
+          </a>
+          {{ end }}
+        </div>
+        <div class="collage-row collage-row-2">
+          {{ range after 3 .images }}
+          <a class="collage-item" href="/images/{{ .full }}" data-pswp-width="{{ .w }}" data-pswp-height="{{ .h }}" target="_blank">
+            <img src="/images/{{ .full }}" alt="" loading="lazy">
+          </a>
+          {{ end }}
+        </div>
+      </div>
+      {{ else }}
+      {{ $imgs := .images }}
+      {{ if eq .id "e2011" }}{{ $imgs = first 12 .images }}{{ end }}
       <div class="pswp-gallery photo-grid" id="gal-{{ .id }}">
-        {{ range .images }}
+        {{ range $imgs }}
         <a class="photo" href="/images/{{ .full }}" data-pswp-width="{{ .w }}" data-pswp-height="{{ .h }}" target="_blank">
           <img src="/images/{{ .thumb }}" alt="" loading="lazy">
           <span class="photo-overlay"></span>
         </a>
         {{ end }}
       </div>
+      {{ end }}
     </div>
     {{ end }}
   </div>
